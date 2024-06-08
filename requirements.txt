@@ -1,0 +1,4 @@
+Flask
+Flask-MQTT
+pandas
+mqtt-paho

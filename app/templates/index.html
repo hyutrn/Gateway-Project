@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'main.css')}}" />
+    <link rel="icon" href="{{ url_for('static', filename = 'image/plant.png')}}" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Quicksand"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+      integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+      crossorigin="anonymous"
+    />
+
+    <title>Smart Garden</title>
+  </head>
+  <body>
+    <div class="body-web">
+      <div>
+        <h2 class="clock-title">DIGITAL CLOCK</h2>
+        <div class="clock">
+          <div>
+            <span id="hour">00</span>
+            <span class="text">Hours</span>
+          </div>
+          <div>
+            <span id="minutes">00</span>
+            <span class="text">Minutes</span>
+          </div>
+          <div>
+            <span id="seconds">00</span>
+            <span class="text">Seconds</span>
+          </div>
+          <div>
+            <span id="ampm">AM</span>
+          </div>
+        </div>
+      </div>
+      <div class="body-row">
+        <div class="box">
+          <div class="wave -one"></div>
+          <div class="wave -two"></div>
+          <div class="wave -three"></div>
+          <div class="weathercon">
+            <i class="fas fa-temperature-low" style="color: #e35c08"></i>
+          </div>
+          <div class="info">
+            <h2 class="temp-info">Nhiệt độ</h2>
+            <h1 class="temp" id="temp">20</h1>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="wave -one"></div>
+          <div class="wave -two"></div>
+          <div class="wave -three"></div>
+          <div class="weathercon">
+            <i class="fas fa-water" style="color: #2729a9"></i>
+          </div>
+          <div class="info">
+            <h2 class="humidity-info">Độ ẩm</h2>
+            <div class="row-humidity">
+              <div class="column-humidity">
+                <h4 class="air-humidity-info">Không khí</h4>
+                <h1 class="air-humidity" id="air-humidity">70</h1>
+              </div>
+              <div class="column-humidity">
+                <h4 class="soil-moisture-info">Đất</h4>
+                <h1 class="soil-moisture" id="soil-moisture">60</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="wave -one"></div>
+          <div class="wave -two"></div>
+          <div class="wave -three"></div>
+          <div class="weathercon">
+            <i class="fas fa-sun" style="color: #d89212"></i>
+          </div>
+          <div class="info">
+            <h2 class="light-intensity-info">CĐ ánh sáng</h2>
+            <h1 class="light-intensity" id="light-intensity">500</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="controller-buttons">
+        <div class="toggle-button-cover">
+          <div class="button-cover">
+            <h2 class="controller-title">Bơm</h2>
+            <div class="button r" id="button-1">
+              <input
+                type="checkbox"
+                class="checkbox"
+                id="checkbox-pump"
+                onclick="handleWater(this)"
+              />
+              <div class="knobs"></div>
+              <div class="layer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="toggle-button-cover">
+          <div class="button-cover">
+            <h2 class="controller-title">Quạt</h2>
+            <div class="button r" id="button-1">
+              <input
+                type="checkbox"
+                class="checkbox"
+                id="checkbox-fan"
+                onclick="handleFan(this)"
+              />
+              <div class="knobs"></div>
+              <div class="layer"></div>
+            </div>
+          </div>
+        </div>
+        <div class="toggle-button-cover">
+          <div class="button-cover">
+            <h2 class="controller-title">Đèn</h2>
+            <div class="button r" id="button-1">
+              <input
+                type="checkbox"
+                class="checkbox"
+                id="checkbox-light"
+                onclick="handleLight(this)"
+              />
+              <div class="knobs"></div>
+              <div class="layer"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-column">
+        <div class="chart-row">
+          <iframe width="450" height="260" style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/2174698/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Bi%E1%BB%83u+%C4%91%E1%BB%93+nhi%E1%BB%87t+%C4%91%E1%BB%99+kh%C3%B4ng+kh%C3%AD&type=line"></iframe>
+          <iframe width="450" height="260" style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/2174698/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Bi%E1%BB%83u+%C4%91%E1%BB%93+%C4%91%E1%BB%99+%E1%BA%A9m+kh%C3%B4ng+kh%C3%AD&type=line"></iframe>
+        </div>
+        <div class="chart-row">
+          <iframe width="450" height="260" style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/2174698/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Bi%E1%BB%83u+%C4%91%E1%BB%93+%C4%91%E1%BB%99+%E1%BA%A9m+%C4%91%E1%BA%A5t&type=line"></iframe>
+          <iframe width="450" height="260" style="border: 1px solid #cccccc;"
+            src="https://thingspeak.com/channels/2174698/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Bi%E1%BB%83u+%C4%91%E1%BB%93+c%C6%B0%E1%BB%9Dng+%C4%91%E1%BB%99+%C3%A1nh+s%C3%A1ng&type=line"></iframe>
+        </div>
+      </div>
+    </div>
+
+  <script src="{{ url_for('static', filename = 'source.js')}}"></script>
+  </body>
+</html>

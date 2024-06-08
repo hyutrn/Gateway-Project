@@ -4,8 +4,6 @@ This project create a gateway can control multi node device,...
 
 ## Features
 
-- **Multi Node Support**: Handles multiple node
-- **MQTT Broker**: 
 
 ## Directory Structure
 

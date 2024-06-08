@@ -25,12 +25,26 @@ This project create a gateway can control multi node device,...
 ### Installation
 
 1. Clone the repository:
-
     ```bash
-    git clone https://github.com/hyutrn/
+        git clone https://github.com/hyutrn/Gateway-Project
     ```
-3. Build the project using the provided instructions in the respective README.md file.
-4. Run the server and client applications following the instructions in their respective README.md files.
+2. Install the required packages from the requirements.txt file. Run the following command:
+    ```bash
+        pip install -r requirements.txt
+    ```
+3. Run Server:
+    + Terminal 1:
+    ```bash
+        python3 main.py
+    ```
+    + Terminal 2:
+    ```bash
+        python3 mqttclientGET.py
+4. Open a web browser and navigate to the following address:
+
+    ```[link]
+        http://127.0.0.1:3001
+    ```
 
 ## Contributing
 
